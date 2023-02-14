@@ -3,7 +3,7 @@ import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 import LoginPage from "./LoginPage"
 import Home from "./Home";
 import About from "./About";
-// import BarInfo from "./BarInfo";
+import BarInfo from "./BarInfo";
 import Account from "./Account";
 // import NewCrawl from "./NewCrawl";
 // import CrawlList from "./CrawlLists";
@@ -42,13 +42,13 @@ function App() {
       path: "/about",
       element: <About/>
     },
-    // {
-    //   path:"/barinfo",
-    //   element: <BarInfo
-    //     clickedBar={clickedBar}
-    //     loggedInUser={loggedInUser}
-    //   />
-    // },
+    {
+      path:"/barinfo",
+      element: <BarInfo
+        clickedBar={clickedBar}
+        loggedInUser={loggedInUser}
+      />
+    },
     {
       path: "/account",
       element: <Account

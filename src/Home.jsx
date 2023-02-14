@@ -67,7 +67,8 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
      }
 
 
-     if (!barArray.length === 0) return null
+    if (!barArray.length === 0) return null
+    
     return(
         <div className="homepage">
             {/* Test Buttons */}

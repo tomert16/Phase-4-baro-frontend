@@ -23,31 +23,32 @@ export default function LoginPage ({ setLoggedInUser}){
         setUserArray(res)
     }
 
-        useEffect(() => {
-            fetchUsers()
-        }, [])
-        
-        //handles setting who the logged in user is finding if there is a user name 
-        //and password that match on the user array
-        function handleLogin(){
-            let loginArray = userArray.filter((user) => {
-                return user.username === usernameInput && user.password === passwordInput
-            })[0]
-            //if there is no user name and password that match then alert the user
-            if (loginArray === undefined){
-                alert("Incorrect Username or Password")
-            //if there is a match we set the logged in user to the user that matched and go to the home page
-            }else{
-                setLoggedInUser(loginArray)
-                navigate('/home')
-            }
-        }
-        //if the user wants to continue as a guest we set the logged in user to undefined and go
-        // to the home page
-        function handleGuestLogin(){
-            setLoggedInUser(undefined)
+    useEffect(() => {
+        fetchUsers()
+    }, [])
+    
+    //handles setting who the logged in user is finding if there is a user name 
+    //and password that match on the user array
+    function handleLogin(){
+        let loginArray = userArray.filter((user) => {
+            return user.username === usernameInput && user.password === passwordInput
+        })[0]
+        //if there is no user name and password that match then alert the user
+        if (loginArray === undefined){
+            alert("Incorrect Username or Password")
+        //if there is a match we set the logged in user to the user that matched and go to the home page
+        }else{
+            setLoggedInUser(loginArray)
             navigate('/home')
         }
+    }
+    //if the user wants to continue as a guest we set the logged in user to undefined and go
+    // to the home page
+    function handleGuestLogin(){
+        setLoggedInUser(undefined)
+        navigate('/home')
+    }
+    
     return(
         <div className="login-background">
             <div className="login-div">
@@ -66,8 +67,7 @@ export default function LoginPage ({ setLoggedInUser}){
                         <Form.Input fluid placeholder="Password" onChange={(e) => setPasswordInput(e.target.value)}/>
                         <Form.Button type="submit">Login</Form.Button>
                         <br/>
-                        <br/>
-                        <button type="button" onClick={() => navigate('/home')}> Create an Account</button>
+                        <button type="button" onClick={() => navigate('/newuser')}> Create an Account</button>
                         <br/>
                         <button type="button" onClick={() => handleGuestLogin()}> Continue as Guest</button>
                         <br/>

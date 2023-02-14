@@ -7,7 +7,7 @@ import About from "./About";
 import BarInfo from "./BarInfo";
 import Account from "./Account";
 // import NewCrawl from "./NewCrawl";
-// import CrawlList from "./CrawlLists";
+import CrawlList from "./CrawlLists";
 
 
 function App() {
@@ -59,17 +59,17 @@ function App() {
       element: <Account
         loggedInUser={loggedInUser}
       />
-    }
+    },
     // {
     //   path: "/newcrawl",
     //   element: <NewCrawl
     //     barCrawlData={barCrawlData}
     //   />
     // },
-    // {
-    //   path: "/crawllist",
-    //   element: <CrawlList/>
-    // }
+    {
+      path: "/crawllist",
+      element: <CrawlList/>
+    }
   ])
   return (
 

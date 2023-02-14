@@ -75,7 +75,7 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
 
             <div className="nav-bar">
                 <button type="button" onClick={() => navigate('/about')}> About</button>
-                <button type="button" onClick={() => navigate('/crawllist')}> View all Crawls</button>
+                <button type="button" onClick={() => navigate('/crawllist')}> View All Crawls</button>
                 <button type="button" onClick={() => navigate('/account')}> Account Info</button>
                 <button type="button" onClick={() => navigate('/')}> Exit</button>
             </div>
@@ -88,25 +88,23 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
             </div>
                 <div className="bar-crawl-container">
                     <div className="bar-crawl-list">
-                    {crawlArray.map((bar) => {
-                        return(
-                            <div>
-
-                            <BarCard
-                                type={'crawl'}
-                                setClickedBar={setClickedBar}
-                                key={bar.id}
-                                bar={bar}
-                                crawlArray={crawlArray}
-                                setCrawlArray={setCrawlArray}                            
-                            />
-                            <h1 className="crawl-arrow"> {<SlArrowRight />} </h1>
-                            </div>
-                        )
-                    })}
+                        {crawlArray.map((bar) => {
+                            return(
+                                <div>
+                                    <BarCard
+                                        type={'crawl'}
+                                        setClickedBar={setClickedBar}
+                                        key={bar.id}
+                                        bar={bar}
+                                        crawlArray={crawlArray}
+                                        setCrawlArray={setCrawlArray}                            
+                                    />
+                                    <h1 className="crawl-arrow"> {<SlArrowRight />} </h1>
+                                </div>
+                            )
+                        })}
                     </div>
                 <button className="bar-crawl-button"
-
                     onClick={() => setCrawlArray([])}
                 >Clear Crawl
                 </button>
@@ -115,7 +113,6 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
                     onClick={() => handleCreateCrawlClick()}
                 >Create Crawl
                 </button>
-
             </div>
 
 

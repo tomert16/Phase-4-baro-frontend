@@ -219,6 +219,10 @@ body{
   margin: 0px
 }
 
+button{
+  cursor: pointer;
+}
+
 /* load-up page */
 
 .login-background{
@@ -339,22 +343,94 @@ body{
   background-color: rgb(192, 225, 255)
 }
 
+/* nav bar */
+.nav-bar{
+  justify-content: center;
+  display: flex;
+  position: sticky;
+  padding: 15px;
+  top: 0;
+  gap: 5em;
+  background-color: antiquewhite;
+  z-index: 100;
+}
+.nav-bar > button{
+  font-family: "Ultra", serif;
+  border-color: transparent;
+  font-size: 20px;
+  color:#FF4F00;
+  background-color: transparent;
+  text-shadow: 3px 3px 3px rgb(248, 242, 234);
+}
+.nav-bar > button:hover{
+  opacity: 0.3;
+  background-color: aliceblue;
+}
+
+/* home page */
+
+.homepage{
+  display: flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+}
+
+.title{
+  color: rgb(246, 247, 248);
+  text-align: center;
+  font-size: 15pc;
+  font-family:"Ultra", serif;
+  position: relative;
+  bottom: 50pc;
+  background-color: transparent;
+  text-shadow: 5px 5px 5px #005A9E;
+}
+
 .home-image{
   width: 100%;
   height: 70pc;
 }
+
 .welcome-message{
+  font-family:"Ultra", serif;
   position: relative;
   text-align: center;
-  /* left: 50pc; */
   bottom: 25pc;
   font-size: 60px;
-  font-style: italic;
+  color: #005A9E;
 }
+
 .description{
   font-size: 40px;
   overflow: hidden;
+  padding-left: 30px;
+  padding-right: 30px;
 }
+
+/* bar crawl carousel and buttons */
+.bar-crawl-container button{
+  /* text-align: center; */
+  font-family: 'Ultra', serif;
+  font-size: 12pt;
+  color:#005A9E;
+  height: 60px;
+  width: 175px;
+  padding-top: 12px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: aliceblue;
+  border-color: #FF4F00;
+  border-radius: 40px;
+  margin-left: 40px;
+}
+
+.bar-crawl-container{
+  margin-top: -200px;
+  padding-left: 100px;
+  padding-right: 80px;
+}
+
 
 .bar-container{
   display: grid;
@@ -408,40 +484,10 @@ body{
   color: rgb(192, 107, 3);
 }
 
-.nav-bar{
-  justify-content: center;
-  display: flex;
-  position: sticky;
-  top: 0;
-  gap: 1em;
-}
-.nav-bar > button{
-  border-color: transparent;
-  font-size: 20px;
-  color: rgb(8, 8, 8);
-  background-color: transparent;
-}
-.nav-bar > button:hover{
-  opacity: 0.3;
-}
-
-button{
-  cursor: pointer;
-}
-
-.title{
-  color: rgb(246, 247, 248);
-  text-align: center;
-  font-size: 15pc;
-  font-family:sans-serif;
-  position: relative;
-  bottom: 50pc;
-  background-color: transparent;
-}
-
 .bar-crawl-list{
   display: flex;
   gap: 10em;
+  overflow-x: scroll;
 }
 
 .crawl-arrow{

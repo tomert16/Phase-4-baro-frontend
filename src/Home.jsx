@@ -190,13 +190,13 @@ function BarCard({type, setClickedBar, crawlArray, setCrawlArray, bar}) {
                 onClick={() => handleClick(bar)}
                 >
                 {/* show this ifo when we mouse over the bar image */}
-                <div className="bar-card-info" style={{opacity: mouseOverInfo}}>
+                <div className={type === "main" ? "bar-card-info" : "crawl-card-info"} style={{opacity: mouseOverInfo}}>
                     {bar.name}<br></br>
                     {bar.category}<br></br>
                     {bar.price}
                 </div>
                 <img 
-                    className="bar-card-image" 
+                    className={type === "main" ? "bar-card-image" : "crawl-card-image"} 
                     src={bar.image} 
                     alt={bar.name} 
                     style={{opacity: mouseOverImage}} 

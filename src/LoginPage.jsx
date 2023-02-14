@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Form } from "semantic-ui-react";
-import logo1 from './assets/logo1.png'
+import logo1 from './assets/cropped-logo1.png'
 
 export default function LoginPage ({ setLoggedInUser}){
     const navigate = useNavigate()

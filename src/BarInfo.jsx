@@ -8,20 +8,12 @@ export default function BarInfo({clickedBar, loggedInUser}){
     
     const navigate = useNavigate()
     if ( clickedBar === undefined) {navigate('/home')}
-    
+
     //states used
     const [reviewArray, setReviewArray] = useState([])
-    const [userArray, setUserArray] = useState([])
-
 
     useEffect(() => {
         
-        //fetch user list
-        const fetchUsers = async () => {
-           const req = await fetch('http://localhost:3000/users')
-           const res = await req.json()
-           setUserArray(res)
-       }
 
        const fetchReviews = async () => {
            const req = await fetch('http://localhost:3000/reviews')
@@ -29,14 +21,12 @@ export default function BarInfo({clickedBar, loggedInUser}){
            setReviewArray(res)
        }
 
-        fetchUsers()
         fetchReviews()
     }, [])
 
     
     if (!reviewArray[0]) return null
 
-    console.log(userArray)
 
 
     
@@ -45,7 +35,6 @@ export default function BarInfo({clickedBar, loggedInUser}){
         
         return clickedBar.id === review.bar_id
     })
-
 
     const handleUpdateReview = (updatedReview) => {
         const updatedReviews = reviewArray.map((review) => {
@@ -73,24 +62,18 @@ export default function BarInfo({clickedBar, loggedInUser}){
             <h2 className="bar-info-closing-time">{clickedBar.closing_time}</h2>
             {/* form to write a review */}
             <h3>Reviews</h3>
+            <BarReviewForm clickedBar={clickedBar} loggedInUser={loggedInUser} reviewArray={reviewArray} setReviewArray={setReviewArray}/>
             <br></br>
             {/* show all of the reviews for this bar */}
             <div className="bar-reivew-container">
                 {filteredReviewArray.map((review) => {
                     return (
-                        <BarReviewCard
-                        
-                        key={review.user_id}
-                        review={review}
-                        userArray={userArray}
-                        onUpdateReview={handleUpdateReview}
-                        
+                        <BarReviewCard                        
+                            review={review}                        
                         />
                         )
                     })}
             </div>
-            <BarReviewForm clickedBar={clickedBar} loggedInUser={loggedInUser} reviewArray={reviewArray} setReviewArray={setReviewArray}/>
-
         </div>
     )
 }
@@ -99,43 +82,40 @@ export default function BarInfo({clickedBar, loggedInUser}){
 
 
 
-function BarReviewCard({review, userArray, onUpdateReview}){
-    const [contentBody, setContentBody] = useState(review.content)
-    const [starBody, setStarBody] = useState(review.star_rating)
-    const  [toggleEdit, setToggleEdit]  = useState(false);
+function BarReviewCard({review}){
+    // const [contentBody, setContentBody] = useState(review.content)
+    // const [starBody, setStarBody] = useState(review.star_rating)
+    // const  [toggleEdit, setToggleEdit]  = useState(false);
 
-    const handleEditToggle = () => {
-        setToggleEdit(!toggleEdit)
-    }
+    // const handleEditToggle = () => {
+    //     setToggleEdit(!toggleEdit)
+    // }
     
-    const handleReviewEdit = (e) => {
-        e.preventDefault();
+    // const handleReviewEdit = (e) => {
+    //     e.preventDefault();
         
-        fetch(`http://localhost:3000/reviews/${review.id}`,{
-            method: 'PATCH',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                content: contentBody,
-                star_rating: starBody
-            })
-        })
-        .then((r) => r.json())
-        .then((updatedReview) => onUpdateReview(updatedReview))
-    }
-
-    let userReview = userArray.find((user) => {
-        return user.id === review.user_id
-    })    
+    //     fetch(`http://localhost:3000/reviews/${review.id}`,{
+    //         method: 'PATCH',
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             content: contentBody,
+    //             star_rating: starBody
+    //         })
+    //     })
+    //     .then((r) => r.json())
+    //     .then((updatedReview) => onUpdateReview(updatedReview))
+    // }       
     
     return(
+
         <div className="bar-review-card">
-            <div className="review-author">{userReview.username}</div>
-            <div className="review-rating">{review.star_rating}</div>
+            <div className="review-author">{review.username}</div>
+            <div className="review-rating">{review.star_rating}/5 Stars</div>
             <div className="review-body">{review.content}</div>     
-            <button className="edit-button" onClick={handleEditToggle}>Edit</button> 
-            {toggleEdit ? <form className="edt-form" onSubmit={handleReviewEdit}>
+            {/* <button className="edit-button" onClick={handleEditToggle}>Edit</button>  */}
+            {/* {toggleEdit ? <form className="edt-form" onSubmit={handleReviewEdit}>
                 <input  
                     type="text"
                     name="star_rating"
@@ -150,9 +130,9 @@ function BarReviewCard({review, userArray, onUpdateReview}){
                     onChange={(e) => setContentBody(e.target.value)}
                     />
                 <input type="submit" value="Save"/>
-            </form> : null}    
+            </form> : null}     */}
 
-            {/* {console.log(review.user?.username)} */}
+            {/* {console.log(review.user?.username)}
             <button className="delete-button" onClick={(e) => {
                 fetch(`http://localhost:3000/reviews/${review.id}`, {
                     method: "DELETE",
@@ -163,7 +143,7 @@ function BarReviewCard({review, userArray, onUpdateReview}){
                 }),
                 e.target.parentElement.remove()
             }}
-            >Delete</button>
+            >Delete</button> */}
         </div>
     )
 }

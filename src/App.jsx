@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 import LoginPage from "./LoginPage"
 import Home from "./Home";
-// import About from "./About";
+import About from "./About";
 // import BarInfo from "./BarInfo";
-// import Account from "./Account";
+import Account from "./Account";
 // import NewCrawl from "./NewCrawl";
 // import CrawlList from "./CrawlLists";
 
@@ -37,11 +37,11 @@ function App() {
         setLoggedInUser={setLoggedInUser}
         loggedInUser={loggedInUser}
       />
-    }
-    // {
-    //   path: "/about",
-    //   element: <About/>
-    // },
+    },
+    {
+      path: "/about",
+      element: <About/>
+    },
     // {
     //   path:"/barinfo",
     //   element: <BarInfo
@@ -49,12 +49,12 @@ function App() {
     //     loggedInUser={loggedInUser}
     //   />
     // },
-    // {
-    //   path: "/account",
-    //   element: <Account
-    //     loggedInUser={loggedInUser}
-    //   />
-    // },
+    {
+      path: "/account",
+      element: <Account
+        loggedInUser={loggedInUser}
+      />
+    }
     // {
     //   path: "/newcrawl",
     //   element: <NewCrawl

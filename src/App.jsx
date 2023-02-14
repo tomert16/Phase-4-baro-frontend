@@ -17,7 +17,14 @@ function App() {
   const [clickedBar, setClickedBar] = useState()
   const [barCrawlData,  setBarCrawlData] = useState() 
 
-
+  // useEffect for auto-login
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setLoggedInUser(user));
+      }
+    });
+  },[]);
   //all the routes
   const router = createBrowserRouter([
     {
@@ -32,7 +39,10 @@ function App() {
     },
     {
       path: "newuser",
-      element: <NewUser/>
+      element: <NewUser 
+        loggedInUser={loggedInUser} 
+        setLoggedInUser={setLoggedInUser}
+      />
     },
     {
       path: "/home",

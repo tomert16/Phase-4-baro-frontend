@@ -29,7 +29,7 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
 
 
     // const addCrawls = async () => {
-    //     fetch ('http://localhost:9292/crawl_list', {
+    //     fetch ('http://localhost:3000/crawl_list', {
     //         method: 'POST',
     //         headers: {
     //             'Content-Type': 'application/json'
@@ -82,7 +82,7 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
             <img className="home-image" src="https://citizenside.com/wp-content/uploads/2022/12/bar-hopping-1-1170x780.jpg" />
             <h1 className="title">Baro</h1>
             <div className="welcome-message">
-            <h3>Welcome To BarO {loggedInUser ? loggedInUser.display_name : ""}</h3>
+            <h3>Welcome To BarO {loggedInUser ? loggedInUser.real_name : ""}</h3>
             <p className="description">The goal of BarO is to enhance your bar hopping experience to the MAX,</p>
             <p className= "description">so you will have a night to remember!</p>
             </div>
@@ -159,7 +159,7 @@ function BarCard({type, setClickedBar, crawlArray, setCrawlArray, bar}) {
     //       // console.log(isFavorited)
     //     setIsFavorited(!isFavorited)
     // // console.log(id)
-    //     fetch(`http://localhost:9292/bars/${bar.id}`, {
+    //     fetch(`http://localhost:3000/bars/${bar.id}`, {
     //         method: "PATCH",
     //         headers: {
     //           "Content-Type": "application/json",

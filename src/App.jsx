@@ -7,7 +7,7 @@ import About from "./About";
 import BarInfo from "./BarInfo";
 import Account from "./Account";
 // import NewCrawl from "./NewCrawl";
-// import CrawlList from "./CrawlLists";
+import CrawlList from "./CrawlLists";
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
 
   // useEffect for auto-login
   useEffect(() => {
-    fetch("/me").then((r) => {
+    fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setLoggedInUser(user));
       }
@@ -69,17 +69,17 @@ function App() {
       element: <Account
         loggedInUser={loggedInUser}
       />
-    }
+    },
     // {
     //   path: "/newcrawl",
     //   element: <NewCrawl
     //     barCrawlData={barCrawlData}
     //   />
     // },
-    // {
-    //   path: "/crawllist",
-    //   element: <CrawlList/>
-    // }
+    {
+      path: "/crawllist",
+      element: <CrawlList/>
+    }
   ])
   return (
 

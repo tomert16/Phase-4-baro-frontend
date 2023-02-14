@@ -211,55 +211,73 @@ button{
   margin-top: 5%;
 } */
 
-*{
+/* *{
   background-color: antiquewhite;
+} */
+
+body{
+  margin: 0px
 }
 
-.logo{
-  width: 190%;
-  position: relative;
-  bottom: 150%;
-  left: -9%;
-}
+/* load-up page */
 
 .login-background{
-  background-size: cover;
+  background-color: antiquewhite;
   height: 100vh;
   padding:0;
   margin:0;
 }
 
 .login-div{
-  position: absolute;
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  height: 40%;
-  width: 30%;
-  margin-left: 25%;
-  margin-top: 25%;  
-  background-color: transparent;
+  align-items: center;
+  /* height: 80%; */
+  /* width: 80%; */
+  /* height: 40%;
+  width: 30%; */
+  /* margin-left: 25%;
+  margin-top: 25%;   */
+  /* background-color: transparent; */
+  background-color: antiquewhite;
 }
-.welcome{
-  background-color: transparent;
-  color: rgb(255, 153, 29);
-  font-size: 10pc;
-  position: relative;
-  bottom: 100%;
-  left:35%;
-}
-.motto{
-  background-color: transparent;
-  color: rgb(2, 67, 172);
-  font-size: 30px;
-  position: relative;
-  bottom: 125%;
-  left:35%;
-}
-.start-btn{
-  position: relative;
-  bottom: 200%;
-  left:35%;
 
+.logo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60rem;
+  /* position: relative; */
+  /* bottom: 150%; */
+  /* left: -9%; */
 }
+
+.start-btn{
+  display: flex;
+  flex-direction: column;
+  /* align-self: center; */
+  text-align: center;
+  font-family: 'Ultra', serif;
+  font-size: 12pt;
+  color:#005A9E;
+  height: 60px;
+  width: 175px;
+  padding-top: 6px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: aliceblue;
+  border-color: #FF4F00;
+  border-radius: 40px;
+}
+
+.start-btn:hover{
+  background-color: rgb(192, 225, 255);
+}
+
+/* login form */
 
 .form-popup{
   background: rgba(0,0,0,.5);
@@ -270,21 +288,57 @@ button{
   width: 100%;
   z-index: 1000;
 }
+
 .form-div{
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 38%;
+  top: 33%;
   left: 35%;
-  width: 30%;
+  width: 28%;
   background-color: transparent;
 }
 
 .login-form{
   border-style: solid;
+  border-width: 4px;
+  border-color: #005A9E;
   border-radius: 10px;
   font-size: larger;
+  height: 30rem;
+  background-color: antiquewhite;
 }
+
+.login-form h3{
+  color: #005A9E;
+  font-size: larger;
+  font-family: 'Ultra', serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.login-form input{
+  margin-bottom: 15px;
+  height: 25px;
+}
+
+.login-form button{
+  margin-bottom: 15px;
+  height: 35px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: 'Ultra', serif;
+  color: #005A9E;
+
+  background-color: aliceblue;
+  border-color: #FF4F00;
+  border-radius: 40px;
+  text-align: center;
+}
+.login-form button:hover{
+  background-color: rgb(192, 225, 255)
+}
+
 .home-image{
   width: 100%;
   height: 70pc;
@@ -314,7 +368,7 @@ button{
 
 .bar-card{
   border-style: solid;
-
+  
   border-radius: 30px;
   border-color: transparent;
   height: fit-content;
@@ -323,6 +377,24 @@ button{
   cursor: pointer;
   position: relative;
   left: 5%;
+}
+
+.welcome{
+  background-color: transparent;
+  color: rgb(255, 153, 29);
+  font-size: 10pc;
+  position: relative;
+  bottom: 100%;
+  left:35%;
+}
+
+.motto{
+  background-color: transparent;
+  color: rgb(2, 67, 172);
+  font-size: 30px;
+  position: relative;
+  bottom: 125%;
+  left:35%;
 }
 .bar-card-info{
   text-align:  center;
@@ -352,6 +424,7 @@ button{
 .nav-bar > button:hover{
   opacity: 0.3;
 }
+
 button{
   cursor: pointer;
 }

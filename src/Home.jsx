@@ -10,7 +10,6 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
     //states list 
     const [barArray, setBarArray] = useState([])
     const [crawlArray, setCrawlArray] = useState([])
-    const [stringcrawlBarIDArray, setStringcrawlBarIDArray] = useState([])
 
     //fetch all the bars 
     useEffect(() => {
@@ -42,21 +41,22 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
     //     })
     //     .then(res => res.json())
     // }
-    // //function so when we create a crawl, we save the ID's of the bar that we will have on the crawl 
-    // //as a string and pass it to the new crawl page through states
-    //  function handleCreateCrawlClick(){
-    //     //make an array of the ID's of the bars in the crawl
-    //     const crawlBarIDArray = crawlArray.map((bar) => {
-    //         return bar.id
-    //     })
-    //     //turn that array into a string
-    //     setStringcrawlBarIDArray(crawlBarIDArray.toString())
-    //     //set the state of the barCrawlData to the string of the ID's of the bars in the crawl
-    //     setBarCrawlData(stringcrawlBarIDArray)
-    //     //navigate to the new crawl page
-    //     addCrawls()
-    //     navigate('/newcrawl')        
-    //  }
+
+    //function so when we create a crawl, we save the ID's of the bar that we will have on the crawl 
+    //as a string and pass it to the new crawl page through states
+     function handleCreateCrawlClick(){
+        //make an array of the ID's of the bars in the crawl
+        const crawlBarIDArray = crawlArray.map((bar) => {
+            return bar.id
+        })
+        //turn that array into a string
+        setBarCrawlData(crawlBarIDArray.toString())
+       
+
+        
+        //navigate to the new crawl page
+        navigate('/newcrawl')        
+     }
 
 
      //function to log out by setting the state of the logged in user to undefined

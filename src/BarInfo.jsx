@@ -4,36 +4,45 @@ import { useNavigate } from "react-router-dom";
 import { Form } from "semantic-ui-react";
 
 export default function BarInfo({clickedBar, loggedInUser}){
+
+    
     const navigate = useNavigate()
+    if ( clickedBar === undefined) {navigate('/home')}
+    
     //states used
     const [reviewArray, setReviewArray] = useState([])
     const [userArray, setUserArray] = useState([])
 
 
-     //fetch user list
-     const fetchUsers = async () => {
-        const req = await fetch('http://localhost:3000/users')
-        const res = await req.json()
-        setUserArray(res)
-    }
     useEffect(() => {
-        fetchUsers()
-    }, [])
+        
+        //fetch user list
+        const fetchUsers = async () => {
+           const req = await fetch('http://localhost:3000/users')
+           const res = await req.json()
+           setUserArray(res)
+       }
 
-    //fetch review list
-    const fetchReviews = async () => {
-        const req = await fetch('http://localhost:3000/reviews')
-        const res = await req.json()
-        setReviewArray(res)
-    }
-    useEffect(() => {
+       const fetchReviews = async () => {
+           const req = await fetch('http://localhost:3000/reviews')
+           const res = await req.json()
+           setReviewArray(res)
+       }
+
+        fetchUsers()
         fetchReviews()
     }, [])
+
+    
     if (!reviewArray[0]) return null
+
+    console.log(userArray)
+
 
     
     //find on the reviews that belong to the bar that we are showing 
     const filteredReviewArray = reviewArray.filter((review) =>{
+        
         return clickedBar.id === review.bar_id
     })
 
@@ -102,7 +111,7 @@ function BarReviewCard({review, userArray, onUpdateReview}){
     const handleReviewEdit = (e) => {
         e.preventDefault();
         
-        fetch(`http://localhost:9292/reviews/${review.id}`,{
+        fetch(`http://localhost:3000/reviews/${review.id}`,{
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json"
@@ -145,7 +154,7 @@ function BarReviewCard({review, userArray, onUpdateReview}){
 
             {/* {console.log(review.user?.username)} */}
             <button className="delete-button" onClick={(e) => {
-                fetch(`http://localhost:9292/reviews/${review.id}`, {
+                fetch(`http://localhost:3000/reviews/${review.id}`, {
                     method: "DELETE",
                 })
                 .then((r) => r.json())
@@ -164,7 +173,6 @@ function BarReviewForm ({loggedInUser, reviewArray, setReviewArray, clickedBar})
     const [reviewScore, setReviewScore] = useState("")
     const [reviewContent, setReviewContent] = useState("")
 
-    console.log(loggedInUser)
     const postReview = async () =>{
     // const newReviewContent = {
     //     star_rating: reviewScore,
@@ -179,7 +187,7 @@ function BarReviewForm ({loggedInUser, reviewArray, setReviewArray, clickedBar})
             bar_id: clickedBar.id
         }
 
-       const req = await fetch("http://localhost:9292/reviews",{
+       const req = await fetch("http://localhost:3000/reviews",{
             method: 'POST',
             header: {
                 "Content-Type": "application/json"

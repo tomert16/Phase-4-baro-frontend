@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 import LoginPage from "./LoginPage"
+import NewUser from "./NewUser"
 import Home from "./Home";
 import About from "./About";
 import BarInfo from "./BarInfo";
@@ -28,6 +29,10 @@ function App() {
       element: <LoginPage
         setLoggedInUser={setLoggedInUser}
       />
+    },
+    {
+      path: "newuser",
+      element: <NewUser/>
     },
     {
       path: "/home",

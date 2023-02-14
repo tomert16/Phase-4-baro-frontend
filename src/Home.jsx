@@ -13,46 +13,50 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
     const [stringcrawlBarIDArray, setStringcrawlBarIDArray] = useState([])
 
     //fetch all the bars 
-    const fetchBars = async () => {
-        const req = await fetch('http://localhost:9292/bars')
-        const res = await req.json()
-        setBarArray(res)
-    }
     useEffect(() => {
+        const fetchBars = async () => {
+            const req = await fetch('http://localhost:3000/bars')
+            const res = await req.json()
+            setBarArray(res)
+        }
+        
         fetchBars()
     }, [])  
 
+    // if (!barArray[0]) return null
 
 
-    const addCrawls = async () => {
-        fetch ('http://localhost:9292/crawl_list', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user_id: loggedInUser.id,
-                bar_crawl_name: "test",
-                bar_crawl_bars: stringcrawlBarIDArray
-            })
-        })
-        .then(res => res.json())
-    }
-    //function so when we create a crawl, we save the ID's of the bar that we will have on the crawl 
-    //as a string and pass it to the new crawl page through states
-     function handleCreateCrawlClick(){
-        //make an array of the ID's of the bars in the crawl
-        const crawlBarIDArray = crawlArray.map((bar) => {
-            return bar.id
-        })
-        //turn that array into a string
-        setStringcrawlBarIDArray(crawlBarIDArray.toString())
-        //set the state of the barCrawlData to the string of the ID's of the bars in the crawl
-        setBarCrawlData(stringcrawlBarIDArray)
-        //navigate to the new crawl page
-        addCrawls()
-        navigate('/newcrawl')        
-     }
+
+
+    // const addCrawls = async () => {
+    //     fetch ('http://localhost:9292/crawl_list', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             user_id: loggedInUser.id,
+    //             bar_crawl_name: "test",
+    //             bar_crawl_bars: stringcrawlBarIDArray
+    //         })
+    //     })
+    //     .then(res => res.json())
+    // }
+    // //function so when we create a crawl, we save the ID's of the bar that we will have on the crawl 
+    // //as a string and pass it to the new crawl page through states
+    //  function handleCreateCrawlClick(){
+    //     //make an array of the ID's of the bars in the crawl
+    //     const crawlBarIDArray = crawlArray.map((bar) => {
+    //         return bar.id
+    //     })
+    //     //turn that array into a string
+    //     setStringcrawlBarIDArray(crawlBarIDArray.toString())
+    //     //set the state of the barCrawlData to the string of the ID's of the bars in the crawl
+    //     setBarCrawlData(stringcrawlBarIDArray)
+    //     //navigate to the new crawl page
+    //     addCrawls()
+    //     navigate('/newcrawl')        
+    //  }
 
 
      //function to log out by setting the state of the logged in user to undefined
@@ -63,7 +67,7 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
      }
 
 
-     
+     if (!barArray.length === 0) return null
     return(
         <div className="homepage">
             {/* Test Buttons */}
@@ -150,21 +154,21 @@ function BarCard({type, setClickedBar, crawlArray, setCrawlArray, bar}) {
         }
     }
 
-    function favoriteBar () {
-          // console.log(isFavorited)
-        setIsFavorited(!isFavorited)
-    // console.log(id)
-        fetch(`http://localhost:9292/bars/${bar.id}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              favorited: isFavorited
-            }),
-          })
-            .then((r) => r.json())
-        }
+    // function favoriteBar () {
+    //       // console.log(isFavorited)
+    //     setIsFavorited(!isFavorited)
+    // // console.log(id)
+    //     fetch(`http://localhost:9292/bars/${bar.id}`, {
+    //         method: "PATCH",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //           favorited: isFavorited
+    //         }),
+    //       })
+    //         .then((r) => r.json())
+    //     }
     
 
     return (
@@ -208,7 +212,7 @@ function BarCard({type, setClickedBar, crawlArray, setCrawlArray, bar}) {
             </button>
             :<></>
             }
-            <button className="favorite-button" onClick={(bar) => favoriteBar(bar.id)}>{isFavorited ? <MdFavorite /> : <MdOutlineFavoriteBorder/> }</button>
+            {/* <button className="favorite-button" onClick={(bar) => favoriteBar(bar.id)}>{isFavorited ? <MdFavorite /> : <MdOutlineFavoriteBorder/> }</button> */}
         </div>
     )
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Form } from "semantic-ui-react";
-import logo1 from './assets/logo1.png'
+import logo1 from './assets/cropped-logo1.png'
 
 export default function LoginPage ({ setLoggedInUser}){
     const navigate = useNavigate()
@@ -65,6 +65,7 @@ export default function LoginPage ({ setLoggedInUser}){
                         <Form.Input fluid placeholder="User Name" onChange={(e) => setUsernameInput(e.target.value)}/>
                         <Form.Input fluid placeholder="Password" onChange={(e) => setPasswordInput(e.target.value)}/>
                         <Form.Button type="submit">Login</Form.Button>
+                        <br/>
                         <br/>
                         <button type="button" onClick={() => navigate('/home')}> Create an Account</button>
                         <br/>

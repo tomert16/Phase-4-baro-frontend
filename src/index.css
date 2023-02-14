@@ -211,32 +211,56 @@ button{
   margin-top: 5%;
 } */
 
-*{
+/* *{
   background-color: antiquewhite;
+} */
+
+body{
+  margin: 0px
 }
 
 .logo{
-  width: 190%;
-  position: relative;
-  bottom: 150%;
-  left: -9%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75rem;
+  /* position: relative; */
+  /* bottom: 150%; */
+  /* left: -9%; */
+}
+
+.start-btn{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  /* position: relative; */
+  /* bottom: 200%; */
+  /* left:35%; */
 }
 
 .login-background{
-  background-size: cover;
-  height: 100vh;
+  /* background-size: cover; */
+  background-color: antiquewhite;
+
+  /* height: 100vh;
   padding:0;
-  margin:0;
+  margin:0; */
 }
 
 .login-div{
-  position: absolute;
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  height: 40%;
-  width: 30%;
-  margin-left: 25%;
-  margin-top: 25%;  
-  background-color: transparent;
+  align-items: center;
+  height: 80%;
+  width: 80%;
+  /* height: 40%;
+  width: 30%; */
+  /* margin-left: 25%;
+  margin-top: 25%;   */
+  /* background-color: transparent; */
+  background-color: antiquewhite;
 }
 .welcome{
   background-color: transparent;
@@ -253,12 +277,6 @@ button{
   position: relative;
   bottom: 125%;
   left:35%;
-}
-.start-btn{
-  position: relative;
-  bottom: 200%;
-  left:35%;
-
 }
 
 .form-popup{

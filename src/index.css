@@ -242,12 +242,13 @@ button{
 .bar-container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
   align-items: stretch;
   gap: 1em;
   margin-left: 5%;
   margin-top: 5%;
   margin-right: 5%;
+  margin-bottom: 5%;
 }
 
 .bar-card{
@@ -302,7 +303,7 @@ button{
 }
 
 
-
+/* bar info page */
 .bar-info-page{
   text-align: center;
 }
@@ -335,4 +336,50 @@ button{
   position: relative;
   bottom: 125%;
   left:35%;
+}
+
+/* crawllist page */
+.crawllist-page{
+  background-color: antiquewhite;
+}
+
+.crawllist-page h1{
+  background-color: antiquewhite;
+  margin: 0;
+  padding-top: 2rem;
+  padding-left: 2rem;
+}
+.crawllist-container{
+  padding-left: 100px;
+  padding-right: 80px;
+}
+
+.bar-crawl{
+  display: flex;
+  overflow-x: scroll;
+  gap: 10rem;
+  padding-left: 100px;
+  padding-right: 80px;
+  /* margin-top: 5rem; */
+  margin: 10px;
+  background-color:rgba(192, 225, 255, 0.308);
+
+}
+
+.crawl-name{
+  font-family: "Ultra", serif;
+  font-size: 30px;
+  color: #005A9E;
+  padding-top: 25px;
+}
+
+.crawllist-img{
+  height: 250px;
+  width: 250px;
+  border-radius: .5rem;
+  margin: 30px
+}
+
+.crawl-bar{
+  font-family: "Ultra", serif;
 }

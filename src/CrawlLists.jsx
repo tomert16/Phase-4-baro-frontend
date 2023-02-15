@@ -32,11 +32,11 @@ export default function CrawlList() {
 
     
     return(
-        <div>
+        <div className="crawllist-page">
             <h1>Here is a list of created crawls</h1>
             <button type="button" onClick={() => navigate('/home')}> Home</button>
 
-            <div className="bar-crawl-container">
+            <div className="crawllist-container">
                 {crawlArray.map((crawl) => {
                     return(
                         <BarCrawl
@@ -71,16 +71,19 @@ function BarCrawl({crawl, barArray}){
 
 
     return(
-        <div className="bar-crawl">
+        <div>
             <div className="crawl-name">{crawl.bar_crawl_name}</div>
             <div>Created by: {crawl.username}</div>
             <div>Bars in this Crawl:</div>
+        <div className="bar-crawl">
             {barCrawlArray.map((bar) => {
                 return(
                     <CrawlBar bar={bar}/>
                 )
             })}
             <br></br>
+        </div>
+
         </div>
     )
 }
@@ -89,7 +92,7 @@ function CrawlBar({bar}){
     return(
         <div>
             <div className="crawl-bar"> {bar[0].name} </div>   
-            <img src={bar[0].image} alt={bar[0].name}/>         
+            <img className="crawllist-img" src={bar[0].image} alt={bar[0].name}/>         
         </div>
     )
 }

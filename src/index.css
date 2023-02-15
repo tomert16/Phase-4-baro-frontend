@@ -6,6 +6,13 @@ button{
   cursor: pointer;
 }
 
+.header-logo {
+  height: 200px;
+  width: 200px;
+  z-index: 100;
+
+}
+
 /* load-up page */
 .login-background{
   background-color: antiquewhite;
@@ -109,21 +116,34 @@ button{
   border-radius: 40px;
   text-align: center;
 }
+
 .login-form button:hover{
   background-color: rgb(192, 225, 255)
 }
 
 /* nav bar */
+.header-div{
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding-bottom: 8px;
+  background-color: antiquewhite;
+
+}
+
 .nav-bar{
   justify-content: center;
   display: flex;
   position: sticky;
-  padding: 15px;
-  top: 0;
+  padding-top: 15px;
+  padding-right: 30px;
   gap: 5em;
   background-color: antiquewhite;
   z-index: 100;
 }
+
 .nav-bar > button{
   font-family: "Ultra", serif;
   border-color: transparent;
@@ -132,9 +152,19 @@ button{
   background-color: transparent;
   text-shadow: 3px 3px 3px rgb(248, 242, 234);
 }
+
 .nav-bar > button:hover{
   opacity: 0.3;
   background-color: aliceblue;
+  border-radius: 40px;
+}
+
+.header-logo {
+  height: 8rem;
+  width: 8rem;
+  padding-top: 10px;
+  padding-left: 30px;
+  background-color: antiquewhite;
 }
 
 /* home page */
@@ -343,15 +373,26 @@ button{
   background-color: antiquewhite;
 }
 
-.crawllist-page h1{
-  background-color: antiquewhite;
-  margin: 0;
-  padding-top: 2rem;
-  padding-left: 2rem;
+.crawllist-page-title{
+  color: rgb(246, 247, 248);
+  text-align: center;
+  font-size: 65pt;
+  font-family:"Ultra", serif;
+  position: relative;
+  bottom: 50pc;
+  /* background-color: transparent; */
+  text-shadow: 5px 5px 5px #005A9E;
+  margin-top: 25pc;
+}
+
+.crawllist-image{
+  width: 100%;
+  height: 40pc;
 }
 .crawllist-container{
   padding-left: 100px;
   padding-right: 80px;
+  margin-top: -500px;
 }
 
 .bar-crawl{
@@ -360,7 +401,7 @@ button{
   gap: 10rem;
   padding-left: 100px;
   padding-right: 80px;
-  /* margin-top: 5rem; */
+  height: 400px;
   margin: 10px;
   background-color:rgba(192, 225, 255, 0.308);
 
@@ -370,7 +411,9 @@ button{
   font-family: "Ultra", serif;
   font-size: 30px;
   color: #005A9E;
-  padding-top: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
 }
 
 .crawllist-img{
@@ -382,4 +425,15 @@ button{
 
 .crawl-bar{
   font-family: "Ultra", serif;
+  font-size: large;
+  color: #005A9E;
+  margin-top: 2rem;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.crawl-subtitle{
+  font-family: "Ultra", serif;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }

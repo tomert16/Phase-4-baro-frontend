@@ -62,9 +62,18 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
      //function to log out by setting the state of the logged in user to undefined
      //and navigating back to the login page
      function logOut(){
-        setLoggedInUser(undefined)
-        navigate('/')
+        // setLoggedInUser(undefined)
+        // navigate('/')
+        fetch("http://localhost:3000/logout", {
+            method: "DELETE",
+        }).then((r) => {
+            if (r.ok) {
+                setLoggedInUser(null)
+                navigate('/')
+            }
+        })
      }
+     
 
 
     if (!barArray.length === 0) return null
@@ -77,7 +86,7 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
                 <button type="button" onClick={() => navigate('/about')}> About</button>
                 <button type="button" onClick={() => navigate('/crawllist')}> View all Crawls</button>
                 <button type="button" onClick={() => navigate('/account')}> Account Info</button>
-                <button type="button" onClick={() => navigate('/')}> Exit</button>
+                <button type="button" onClick={logOut}> Exit</button>
             </div>
             <img className="home-image" src="https://citizenside.com/wp-content/uploads/2022/12/bar-hopping-1-1170x780.jpg" />
             <h1 className="title">Baro</h1>

@@ -19,12 +19,17 @@ function App() {
 
   // useEffect for auto-login
   useEffect(() => {
-    fetch("http://localhost:3000/me").then((r) => {
+    fetch("http://localhost:3000/me")
+    .then((r) => {
       if (r.ok) {
         r.json().then((user) => setLoggedInUser(user));
+      } else {
+        setLoggedInUser(null)
       }
     });
   },[]);
+
+
   //all the routes
   const router = createBrowserRouter([
     {

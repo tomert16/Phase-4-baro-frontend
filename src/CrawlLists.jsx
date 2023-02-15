@@ -79,6 +79,9 @@ export default function CrawlList() {
 
 function BarCrawl({crawl, barArray}){   
 
+
+    const [toggleLogin,  setToggleLogin] = useState(false);
+
     let barCrawlIDArray = crawl.bar_crawl_bars_id.split(',').map(Number)
         
     let barCrawlArray = []
@@ -90,6 +93,11 @@ function BarCrawl({crawl, barArray}){
         })
         barCrawlArray.push(barCrawlDummy)
     })
+
+    
+    const handleToggle = () => {
+        setToggleLogin(!toggleLogin);
+    }
     
 
 
@@ -98,14 +106,30 @@ function BarCrawl({crawl, barArray}){
             <div className="crawl-name">{crawl.bar_crawl_name}</div>
             <div className="crawl-subtitle">Created by: {crawl.username}</div>
             <div className="crawl-subtitle">Bars in this Crawl:</div>
-        <div className="bar-crawl">
-            {barCrawlArray.map((bar) => {
-                return(
-                    <CrawlBar bar={bar}/>
-                )
-            })}
-            <br></br>
-        </div>
+            <div className="bar-crawl">
+                {barCrawlArray.map((bar) => {
+                    return(
+                        <CrawlBar bar={bar}/>
+                    )
+                })}
+                <br></br>
+            </div>
+                <button 
+                    className="bar-crawl-review-button"
+                    onClick={handleToggle}
+                >View Crawl Reviews
+                </button>
+                { toggleLogin ? <div className="form-popup">
+                    <div className="form-div">
+                        <h1>{crawl.bar_crawl_name} Reviews</h1>
+                        {crawl.bar_crawl_reviews.map((review) => {
+                            return(
+                                <CrawlReview review={review}/>
+                            )
+                        })}
+                        <button className="exit-form" onClick={handleToggle}> Hide Reviews</button>
+                    </div>
+                </div>: null}
 
         </div>
     )
@@ -120,3 +144,15 @@ function CrawlBar({bar}){
         </div>
     )
 }
+
+function CrawlReview({review}){
+    return(
+        <div>
+            <div> {review.username} </div>
+            <div> {review.star_rating}/5</div>
+            <div> {review.content} </div> 
+            <br></br>  
+        </div>
+    )
+}
+

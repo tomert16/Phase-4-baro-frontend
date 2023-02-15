@@ -402,19 +402,14 @@ button{
   padding-left: 100px;
   padding-right: 80px;
   height: 400px;
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   background-color:rgba(192, 225, 255, 0.308);
-
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
-.crawl-name{
-  font-family: "Ultra", serif;
-  font-size: 30px;
-  color: #005A9E;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 10px;
-}
 
 .crawllist-img{
   height: 250px;
@@ -432,8 +427,111 @@ button{
   margin-left: 30px;
 }
 
-.crawl-subtitle{
+.crawl-name{
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
   font-family: "Ultra", serif;
+  font-size: 30px;
+  color: #005A9E;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  background-color: aliceblue;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.crawl-subtitle{
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: aliceblue;
+  /* font-family: "Ultra", serif; */
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding-bottom: 10px;
   padding-left: 10px;
+}
+
+.bar-crawl-review-button{
+  font-family: 'Ultra', serif;
+  font-size: 12px;
+  color:#005A9E;
+  height: 8%;
+  width: 8%;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 3px;
+  padding-right: 3px;
+  background-color: aliceblue;
+  border-color: #FF4F00;
+  border-radius: 40px;
+}
+
+.bar-crawl-review-button:hover{
+  background-color: rgb(192, 225, 255)  
+}
+
+.crawl-reviews{
+  /* justify-content: center; */
+  align-items: center;
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #005A9E;
+  border-radius: 10px;
+  font-size: medium;
+  height: auto;
+  font-family: 'Ultra', serif;
+  background-color: antiquewhite;
+}
+
+.crawl-reviews h3{
+  color: #005A9E;
+  font-size: 25px;
+  font-family: 'Ultra', serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.crawl-reviews button{
+  /* margin: auto; */
+  height: 35px;
+  width: 175px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: 'Ultra', serif;
+  color: #005A9E;
+  /* align-self: center; */
+  background-color: aliceblue;
+  border-color: #FF4F00;
+  border-radius: 40px;
+  text-align: center;
+}
+
+.crawl-reviews button:hover{
+  background-color: rgb(192, 225, 255)
+}
+
+.crawl-review-details{
+  background-color: aliceblue;
+  height: auto;
+  width: 85%;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom:solid #ff51001c;
+}
+
+.review-username{
+  margin-bottom: 5px;
+}
+.review-detail{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
 }

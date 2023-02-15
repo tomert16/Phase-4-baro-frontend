@@ -107,7 +107,7 @@ function BarCrawl({crawl, barArray}){
         <div>
             <div className="crawl-name">{crawl.bar_crawl_name}</div>
             <div className="crawl-subtitle">Created by: {crawl.username}</div>
-            <div className="crawl-subtitle">Bars in this Crawl:</div>
+            {/* <div className="crawl-subtitle">Bars in this Crawl:</div> */}
             <div className="bar-crawl">
                 {barCrawlArray.map((bar) => {
                     return(
@@ -126,7 +126,9 @@ function BarCrawl({crawl, barArray}){
             // what the review popup looks like
                 <div className="form-popup">
                     <div className="form-div">
-                        <h1>{crawl.bar_crawl_name} Reviews</h1>
+                        <div className="crawl-reviews">
+
+                        <h3>{crawl.bar_crawl_name} Reviews</h3>
                         {/* if we have no reviews tell the user that */}
                         {crawl.bar_crawl_reviews.length === 0 ? <div> No Reviews Yet</div> : null}
                         {/* show each review */}
@@ -136,6 +138,8 @@ function BarCrawl({crawl, barArray}){
                             )
                         })}
                         <button className="exit-form" onClick={handleToggle}> Hide Reviews</button>
+
+                        </div>
                     </div>
 
                 </div> 
@@ -161,10 +165,10 @@ function CrawlBar({bar}){
 //function to show an individual review
 function CrawlReview({review}){
     return(
-        <div>
-            <div> {review.username} </div>
-            <div> {review.star_rating}/5</div>
-            <div> {review.content} </div> 
+        <div className="crawl-review-details">
+            <div className="review-username"> {review.username} </div>
+            <div className="review-detail"> {review.star_rating}/5</div>
+            <div className="review-detail"> {review.content} </div> 
             <br></br>  
         </div>
     )

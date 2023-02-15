@@ -41,7 +41,7 @@ function App() {
       />
     },
     {
-      path: "newuser",
+      path: "/newuser",
       element: <NewUser 
         loggedInUser={loggedInUser} 
         setLoggedInUser={setLoggedInUser}

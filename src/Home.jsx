@@ -11,7 +11,6 @@ export default function Home ({setClickedBar, setBarCrawlData, setLoggedInUser, 
     const [barArray, setBarArray] = useState([])
     const [crawlArray, setCrawlArray] = useState([])
 
-    console.log(loggedInUser)
 
     //fetch all the bars 
     useEffect(() => {

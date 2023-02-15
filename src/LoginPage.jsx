@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 import { Form } from "semantic-ui-react";
 import logo1 from './assets/cropped-logo1.png'
 
 export default function LoginPage ({ setLoggedInUser}){
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    // const history = useHistory();
     //states used
     const [userArray, setUserArray] = useState([])
     const [usernameInput, setUsernameInput] = useState("")
@@ -18,7 +19,7 @@ export default function LoginPage ({ setLoggedInUser}){
     }
 
     const fetchUsers = async () => {
-        const req = await fetch('http://localhost:9292/users')
+        const req = await fetch('http://localhost:3000/users')
         const res = await req.json()
         setUserArray(res)
     }
@@ -30,17 +31,29 @@ export default function LoginPage ({ setLoggedInUser}){
     //handles setting who the logged in user is finding if there is a user name 
     //and password that match on the user array
     function handleLogin(){
-        let loginArray = userArray.filter((user) => {
-            return user.username === usernameInput && user.password === passwordInput
-        })[0]
-        //if there is no user name and password that match then alert the user
-        if (loginArray === undefined){
-            alert("Incorrect Username or Password")
-        //if there is a match we set the logged in user to the user that matched and go to the home page
-        }else{
-            setLoggedInUser(loginArray)
-            navigate('/home')
-        }
+        // let loginArray = userArray.filter((user) => {
+        //     return user.username === usernameInput && user.password === passwordInput
+        // })[0]
+        // //if there is no user name and password that match then alert the user
+        // if (loginArray === undefined){
+        //     alert("Incorrect Username or Password")
+        // //if there is a match we set the logged in user to the user that matched and go to the home page
+        // }else{
+        //     setLoggedInUser(loginArray)
+        //     navigate('/home')
+        // }
+        fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify( { "username": usernameInput, "password": passwordInput })
+        }).then((r) => {
+            if (r.ok) {
+                r.json().then((user) => setLoggedInUser(user));
+                navigate('/home');
+            }
+        });
     }
     //if the user wants to continue as a guest we set the logged in user to undefined and go
     // to the home page
@@ -63,8 +76,17 @@ export default function LoginPage ({ setLoggedInUser}){
                             handleLogin()
                         }}>
                         <h3>Please Login</h3> 
-                        <Form.Input fluid placeholder="User Name" onChange={(e) => setUsernameInput(e.target.value)}/>
-                        <Form.Input fluid placeholder="Password" onChange={(e) => setPasswordInput(e.target.value)}/>
+                        <Form.Input fluid 
+                            placeholder="User Name" 
+                            value={usernameInput} 
+                            onChange={(e) => setUsernameInput(e.target.value)}
+                        />
+                        <Form.Input fluid 
+                            type="password" 
+                            placeholder="Password" 
+                            value={passwordInput} 
+                            onChange={(e) => setPasswordInput(e.target.value)}
+                        />
                         <Form.Button type="submit">Login</Form.Button>
                         <br/>
                         <button type="button" onClick={() => navigate('/newuser')}> Create an Account</button>

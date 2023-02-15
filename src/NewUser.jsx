@@ -27,12 +27,12 @@ export default function NewUser() {
                 e.preventDefault()
                 handleCreateAcount()
             }}>
-            <h3>Please Make an Acount</h3> 
+            <h3>Please Make an Account</h3> 
             <Form.Input fluid placeholder="Name" onChange={(e) => setNameInput(e.target.value)}/>
             <Form.Input fluid placeholder="User Name" onChange={(e) => setUsernameInput(e.target.value)}/>
             <Form.Input fluid placeholder="Email" onChange={(e) => setEmailInput(e.target.value)}/>
-            <Form.Input fluid placeholder="Password" onChange={(e) => setPasswordInput(e.target.value)}/>
-            <Form.Input fluid placeholder="Confirm Password" onChange={(e) => setConfirmPasswordInput(e.target.value)}/>
+            <Form.Input fluid type="password" placeholder="Password" onChange={(e) => setPasswordInput(e.target.value)}/>
+            <Form.Input fluid type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPasswordInput(e.target.value)}/>
             <Form.Button type="submit">Create an Acount</Form.Button>
             <br/>
             </Form> 

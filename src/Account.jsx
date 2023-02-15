@@ -11,7 +11,7 @@ export default function Account ({loggedInUser}){
 
     //fetch all the reviews
     const fetchReviews = async () => {
-        const req = await fetch('http://localhost:9292/reviews')
+        const req = await fetch('http://localhost:3000/reviews')
         const res = await req.json()
         setReviewArray(res)
     }
@@ -48,7 +48,7 @@ export default function Account ({loggedInUser}){
             <div>
                 <h1> Account  Info</h1>
                 <button type="button" onClick={() => navigate('/home')}> Home</button>
-                <div className="user-text">User:  {loggedInUser.display_name}</div>
+                <div className="user-text">User:  {loggedInUser.real_name}</div>
                 <div className="user-text">Display Name:  {loggedInUser.username}</div>
                 <div className="user-text">Password:  {loggedInUser.password}</div>
                 <div className="user-review-container">

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function NewCrawl({barCrawlData}){
+export default function NewCrawl({barCrawlData, loggedInUser}){
 
     const navigate = useNavigate()
+
+    console.log(loggedInUser)
     
     //fetch all the bars 
     const [barArray, setBarArray] = useState([])

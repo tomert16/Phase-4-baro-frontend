@@ -49,6 +49,8 @@ export default function CrawlList() {
     
     return(
         <div className="crawllist-page">
+
+
             <div className="header-div">
                 <img className="header-logo" src={logo1} onClick={() => navigate('/home')}/>
                 <div className="nav-bar">
@@ -60,6 +62,7 @@ export default function CrawlList() {
             </div>
             <img className="crawllist-image" src="src/assets/another-bar-photo.jpg" />
             <h1 className="crawllist-page-title">Browse Existing Bar Crawls</h1>
+
 
             <div className="crawllist-container">
                 {crawlArray.map((crawl) => {
@@ -76,17 +79,17 @@ export default function CrawlList() {
     )
 }
 
-
+//function to show an individual crawl
 function BarCrawl({crawl, barArray}){   
 
+    //state to toggle showing the review popup
+    const [toggleReviews,  setToggleReviews] = useState(false);
 
-    const [toggleLogin,  setToggleLogin] = useState(false);
 
+    //turn the string of bar ids into an array of bars in the crawl
     let barCrawlIDArray = crawl.bar_crawl_bars_id.split(',').map(Number)
-        
     let barCrawlArray = []
     let barCrawlDummy = null
-    
     barCrawlIDArray.map((id)=>{
         barCrawlDummy = barArray.filter((bar) =>{
             return bar.id === id
@@ -94,12 +97,11 @@ function BarCrawl({crawl, barArray}){
         barCrawlArray.push(barCrawlDummy)
     })
 
-    
+    //flip the state of the review toggle
     const handleToggle = () => {
-        setToggleLogin(!toggleLogin);
+        setToggleReviews(!toggleReviews);
     }
     
-
 
     return(
         <div>
@@ -114,14 +116,20 @@ function BarCrawl({crawl, barArray}){
                 })}
                 <br></br>
             </div>
-                <button 
-                    className="bar-crawl-review-button"
-                    onClick={handleToggle}
-                >View Crawl Reviews
-                </button>
-                { toggleLogin ? <div className="form-popup">
+            {/* toggle showing the reivew popup */}
+            <button 
+                className="bar-crawl-review-button"
+                onClick={handleToggle}
+            > View Crawl Reviews
+            </button>
+            { toggleReviews ? 
+            // what the review popup looks like
+                <div className="form-popup">
                     <div className="form-div">
                         <h1>{crawl.bar_crawl_name} Reviews</h1>
+                        {/* if we have no reviews tell the user that */}
+                        {crawl.bar_crawl_reviews.length === 0 ? <div> No Reviews Yet</div> : null}
+                        {/* show each review */}
                         {crawl.bar_crawl_reviews.map((review) => {
                             return(
                                 <CrawlReview review={review}/>
@@ -129,12 +137,17 @@ function BarCrawl({crawl, barArray}){
                         })}
                         <button className="exit-form" onClick={handleToggle}> Hide Reviews</button>
                     </div>
-                </div>: null}
+
+                </div> 
+                : 
+                null
+            }
 
         </div>
     )
 }
 
+//function to show an individual bar in a crawl
 function CrawlBar({bar}){
     return(
         <div>
@@ -145,6 +158,7 @@ function CrawlBar({bar}){
     )
 }
 
+//function to show an individual review
 function CrawlReview({review}){
     return(
         <div>

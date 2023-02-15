@@ -2,6 +2,8 @@
 import { useState,  useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { Form } from "semantic-ui-react";
+import logo1 from './assets/cropped-logo1.png'
+
 
 export default function BarInfo({clickedBar, loggedInUser}){
 
@@ -48,10 +50,34 @@ export default function BarInfo({clickedBar, loggedInUser}){
     //     console.log("Edit Complete:", updatedReview)
      }
     
+    //function to log out by setting the state of the logged in user to undefined
+     //and navigating back to the login page
+    function logOut(){
+        // setLoggedInUser(undefined)
+        // navigate('/')
+        fetch("http://localhost:3000/logout", {
+            method: "DELETE",
+        }).then((r) => {
+            if (r.ok) {
+                setLoggedInUser(null)
+                navigate('/')
+            }
+        })
+     }
     
     return(
         <div className="bar-info-page">
-            <button type="button" onClick={() => navigate('/home')}> Home</button>
+
+            <div className="header-div">
+                <img className="header-logo" src={logo1} onClick={() => navigate('/home')}/>
+                <div className="nav-bar">
+                    <button type="button" onClick={() => navigate('/about')}> About</button>
+                    <button type="button" onClick={() => navigate('/crawllist')}> View All Crawls</button>
+                    <button type="button" onClick={() => navigate('/account')}> Account Info</button>
+                    <button type="button" onClick={logOut}> Exit</button>
+                </div>
+            </div>
+
             {/* info about the bar */}
             <h1 className="bar-info-name">{clickedBar.name}</h1>
             <img className="bar-info-image" src={clickedBar.image} alt={clickedBar.name}/>

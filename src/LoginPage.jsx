@@ -79,12 +79,14 @@ export default function LoginPage ({ setLoggedInUser}){
                         <Form.Input fluid 
                             placeholder="User Name" 
                             value={usernameInput} 
+                            autoComplete="off"
                             onChange={(e) => setUsernameInput(e.target.value)}
                         />
                         <Form.Input fluid 
                             type="password" 
                             placeholder="Password" 
                             value={passwordInput} 
+                            autoComplete="current-password"
                             onChange={(e) => setPasswordInput(e.target.value)}
                         />
                         <Form.Button type="submit">Login</Form.Button>

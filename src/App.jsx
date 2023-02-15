@@ -13,7 +13,7 @@ import CrawlList from "./CrawlLists";
 function App() {
 
   //global states that sibiling compnenets may need to access
-  const [loggedInUser, setLoggedInUser] = useState()
+  const [loggedInUser, setLoggedInUser] = useState(null)
   const [clickedBar, setClickedBar] = useState()
   const [barCrawlData,  setBarCrawlData] = useState() 
 

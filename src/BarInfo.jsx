@@ -59,7 +59,7 @@ export default function BarInfo({clickedBar, loggedInUser}){
             <h2 className="bar-info-category">{clickedBar.category}</h2>
             <h2 className="bar-info-location">{clickedBar.location}</h2>
             <h2 className="bar-info-price">{clickedBar.price}</h2>
-            <h2 className="bar-info-closing-time">{clickedBar.closing_time}</h2>
+            <h2 className="bar-info-closing-time">closing time {clickedBar.closing_time}</h2>
             {/* form to write a review */}
             <h3>Reviews</h3>
             <BarReviewForm clickedBar={clickedBar} loggedInUser={loggedInUser} reviewArray={reviewArray} setReviewArray={setReviewArray}/>

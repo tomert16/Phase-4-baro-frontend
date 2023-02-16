@@ -79,27 +79,36 @@ export default function BarInfo({clickedBar, loggedInUser}){
             </div>
 
             {/* info about the bar */}
-            <h1 className="bar-info-name">{clickedBar.name}</h1>
-            <img className="bar-info-image" src={clickedBar.image} alt={clickedBar.name}/>
-            <h2 className="bar-info-rating">{clickedBar.rating}</h2>
-            <h2 className="bar-info-category">{clickedBar.category}</h2>
-            <h2 className="bar-info-location">{clickedBar.location}</h2>
-            <h2 className="bar-info-price">{clickedBar.price}</h2>
-            <h2 className="bar-info-closing-time">closing time {clickedBar.closing_time}</h2>
+            <div className="bar-info-container">
+                    <h1 className="bar-info-name">{clickedBar.name}</h1>
+                    <img className="bar-info-image" src={clickedBar.image} alt={clickedBar.name}/>
+                    {/* <h2 className="bar-info-rating">{clickedBar.rating}</h2> */}
+            <div className="details-reviews-container">
+                <div className="bar-info-details">
+                    <h2 className="bar-info-category">{clickedBar.category}</h2>
+                    <h2 className="bar-info-location">{clickedBar.location}</h2>
+                    <h2 className="bar-info-price">{clickedBar.price}</h2>
+                    <h2 className="bar-info-closing-time">Closing Time: {clickedBar.closing_time}</h2>
+                </div>
+                {/* show all of the reviews for this bar */}
+                <div className="bar-reivew-container">
+                    <h3 id="reviews">Reviews</h3>
+                    <div className="scroll-reviews">
+                    {filteredReviewArray.map((review) => {
+                        return (
+                            <BarReviewCard                        
+                                review={review}                        
+                            />
+                            )
+                        })}
+
+                    </div>
+                </div>
+            </div>    
+            </div>
             {/* form to write a review */}
-            <h3>Reviews</h3>
             <BarReviewForm clickedBar={clickedBar} loggedInUser={loggedInUser} reviewArray={reviewArray} setReviewArray={setReviewArray}/>
             <br></br>
-            {/* show all of the reviews for this bar */}
-            <div className="bar-reivew-container">
-                {filteredReviewArray.map((review) => {
-                    return (
-                        <BarReviewCard                        
-                            review={review}                        
-                        />
-                        )
-                    })}
-            </div>
         </div>
     )
 }
@@ -139,7 +148,7 @@ function BarReviewCard({review}){
         <div className="bar-review-card">
             <div className="review-author">{review.username}</div>
             <div className="review-rating">{review.star_rating}/5 Stars</div>
-            <div className="review-body">{review.content}</div>     
+            <div className="bar-review-body">{review.content}</div>     
             {/* <button className="edit-button" onClick={handleEditToggle}>Edit</button>  */}
             {/* {toggleEdit ? <form className="edt-form" onSubmit={handleReviewEdit}>
                 <input  
